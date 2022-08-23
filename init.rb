@@ -1,8 +1,3 @@
-require 'redmine'
-
-require_dependency 'issue_patch'
-require_dependency 'issues_helper_patch'
-
 # Rails.configuration.to_prepare do
 #   unless Issue.included_modules.include?(ChangeAuthorIssuePatch)
 #       Issue.send(:include, ChangeAuthorIssuePatch)
