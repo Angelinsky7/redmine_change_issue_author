@@ -1,12 +1,4 @@
-# Rails.configuration.to_prepare do
-#   unless Issue.included_modules.include?(ChangeAuthorIssuePatch)
-#       Issue.send(:include, ChangeAuthorIssuePatch)
-#   end
-  
-#   unless IssuesHelper.included_modules.include?(IssuesHelperPatch)
-#       IssuesHelper.send(:include, IssuesHelperPatch)
-#   end
-# end
+require_dependency 'redmine_change_issue_author/change_issue_author_hook'
 
 Issue.send(:include, RedmineChangeIssueAuthor::IssuePatch)
 IssuesHelper.send(:include, RedmineChangeIssueAuthor::IssuesHelperPatch)

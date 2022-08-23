@@ -1,0 +1,7 @@
+<% if User.current.admin? %>
+  <p>
+    <label for='issue_author_id'><%= l(:field_author) %></label>
+    <%- options = content_tag('option', l(:label_no_change_option), :value => '') + options_for_select(author_options_for_select(nil, @project), @issue_params[:author_id]) -%>
+    <%= select_tag 'issue[author_id]', options %>                  
+  </p>
+<% end %>

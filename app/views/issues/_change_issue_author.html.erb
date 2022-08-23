@@ -1,0 +1,7 @@
+<% if @issue && User.current.allowed_to?(:edit_issue_author, @project) %>
+  <p>
+    <label for="issue_author_id"><%= l(:field_author) %><span class="required"> *</span></label>
+    <%- options = options_for_select(author_options_for_select(@issue, @project), @issue.author_id) -%>
+    <%= select_tag 'issue[author_id]', options, :include_blank => false, :required => true %>
+  </p>
+<% end %>
