@@ -3,15 +3,18 @@ require 'redmine'
 require_dependency 'issue_patch'
 require_dependency 'issues_helper_patch'
 
-Rails.configuration.to_prepare do
-  unless Issue.included_modules.include?(ChangeAuehorIssuePatch)
-      Issue.send(:include, ChangeAuehorIssuePatch)
-  end
+# Rails.configuration.to_prepare do
+#   unless Issue.included_modules.include?(ChangeAuthorIssuePatch)
+#       Issue.send(:include, ChangeAuthorIssuePatch)
+#   end
   
-  unless IssuesHelper.included_modules.include?(IssuesHelperPatch)
-      IssuesHelper.send(:include, IssuesHelperPatch)
-  end
-end
+#   unless IssuesHelper.included_modules.include?(IssuesHelperPatch)
+#       IssuesHelper.send(:include, IssuesHelperPatch)
+#   end
+# end
+
+Issue.send(:include, RedmineChangeIssueAuthor::IssuePatch)
+IssuesHelper.send(:include, RedmineChangeIssueAuthor::IssuesHelperPatch)
 
 Redmine::Plugin.register :redmine_change_issue_author do
   name 'Change issue author plugin'
